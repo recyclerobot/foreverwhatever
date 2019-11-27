@@ -43,7 +43,7 @@
   "scripts": {
     "downloader": "node scripts/downloader/index.js",
     "scraper": "node scripts/scraper/index.js",
-    "start": "DEV=true electron .",
+    "start": "electron .",
     "cleanup": "find ./downloads -size 0 -delete",
     "pack": "electron-builder --dir",
     "dist": "DEBUG=electron-builder electron-builder -mw"
