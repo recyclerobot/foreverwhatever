@@ -14,6 +14,7 @@ let fileList = fs.readdirSync(path.resolve(__dirname, "./downloads"));
 let index = 0; // last checked index: 124
 let currentFile;
 let currentVideoId;
+let modus = 1;
 
 // Helper
 const removeFromFs = videoId => {
@@ -82,7 +83,8 @@ function playNextVideo() {
     }
 
     // 3. Check conditions
-    if (doc && !doc.hidden && !doc.favorite) {
+    const cond = modus === 2 ? doc.favorite : !doc.hidden && !doc.favorite;
+    if (doc && cond) {
       console.log("doc", doc);
 
       // 4. replace video
@@ -119,6 +121,21 @@ document.addEventListener(
   "keydown",
   event => {
     const keyName = event.key;
+
+    // 1 = Start in "forever or whatever mode"
+    if (keyName === "1") {
+      modus = 1;
+      fileList = shuffle(fileList);
+      playNextVideo();
+      return;
+    }
+
+    // 2 = Start in "only forever"
+    if (keyName === "2") {
+      modus = 2;
+      playNextVideo();
+      return;
+    }
 
     // N = next video
     if (keyName === "n") {
