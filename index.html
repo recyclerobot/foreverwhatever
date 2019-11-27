@@ -21,7 +21,11 @@
         position: absolute;
         top: 36px;
         left: 36px;
-        font-size: 36px;
+        font-size: 24px;
+      }
+      #smaller {
+        margin-top: 18px;
+        font-size: 14px;
       }
     </style>
     <base href="./" />
@@ -29,13 +33,19 @@
   <body>
     <video width="100%" height="100%" autoplay loop></video>
     <div id="overlay">
-      👋 Forever Whatever
-      <div>N = Next video</div>
-      <div>S = Shuffle videos</div>
-      <div>R = Reset playlist</div>
-      <div>D = delete from db ☠️</div>
-      <div>F = Forever (favorite)</div>
-      <div>W = Whatever (don't show every again)</div>
+      ‍🤷 Forever Whatever
+      <div id="smaller">Keyboard shortcuts:</div>
+      <div>1 = Start the "forever whatever" modus</div>
+      <div>2 = Start the "only forever" modus</div>
+      <div id="smaller">
+        <div>Advanced:</div>
+        <div>F = Forever (favorite)</div>
+        <div>W = Whatever (don't show every again)</div>
+        <div>N = Next video</div>
+        <div>S = Shuffle videos</div>
+        <div>R = Reset database (will reset all previous favorites)</div>
+        <div>D = delete from db (will permanently delete video)</div>
+      </div>
     </div>
   </body>
 </html>
