@@ -15,7 +15,6 @@ function createWindow() {
   });
 
   mainWindow.setMenuBarVisibility(false);
-  mainWindow.removeMenu();
   mainWindow.loadFile("index.html");
 
   // // uncomment to show devtools
