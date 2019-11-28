@@ -8,11 +8,14 @@ function createWindow() {
     width: 800,
     height: 600,
     fullscreen: true,
+    frame: false,
     webPreferences: {
       preload: path.resolve(__dirname, "preload.js")
     }
   });
 
+  mainWindow.setMenuBarVisibility(false);
+  mainWindow.removeMenu();
   mainWindow.loadFile("index.html");
 
   // // uncomment to show devtools
