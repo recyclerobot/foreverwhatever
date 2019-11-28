@@ -108,7 +108,9 @@ ${Math.floor(Math.random() * 5, 10)} views`;
         "favorite",
         doc.favorite
       );
-      playNextVideo();
+
+      // try next video (with delay, if there are no more videos available > dont flood)
+      setTimeout(playNextVideo, 1000);
     }
   });
 }
