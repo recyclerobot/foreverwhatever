@@ -99,7 +99,7 @@ function playNextVideo() {
       const dateStr = `${month} ${date.getDay()}, ${date.getFullYear()} - ${date.getHours()}:${date.getMinutes()}`;
       element.innerText = `${doc.snippet.title}
 ${dateStr}
-${Math.floor(Math.random() * 10 + 1, 10)} views`;
+${Math.floor(Math.random() * 5, 10)} views`;
     } else {
       // doesnt meet conditions to be shown, try again!
       console.log(
