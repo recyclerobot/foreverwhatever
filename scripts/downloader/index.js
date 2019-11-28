@@ -37,7 +37,7 @@ const downloadAllInDb = () => {
     if (err) console.error("🚨", err);
     if (doc) {
       const videoId = doc.id.videoId;
-      const path = `public/downloads/${videoId}.mp4`;
+      const path = `downloads/${videoId}.mp4`;
 
       if (fs.existsSync(path)) {
         console.log(

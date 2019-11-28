@@ -15,6 +15,7 @@ let index = 0; // last checked index: 124
 let currentFile;
 let currentVideoId;
 let modus = 1;
+let loopTimeout;
 
 // Helper
 const removeFromFs = videoId => {
@@ -61,6 +62,13 @@ const reset = () => {
       console.log("⛱ hide", doc);
     }
   );
+};
+
+const loop = () => {
+  loopTimeout = setTimeout(function loopfn() {
+    playNextVideo();
+    loop();
+  }, 5000);
 };
 
 function playNextVideo() {
@@ -110,7 +118,7 @@ ${Math.floor(Math.random() * 5, 10)} views`;
       );
 
       // try next video (with delay, if there are no more videos available > dont flood)
-      setTimeout(playNextVideo, 1000);
+      setTimeout(playNextVideo, 100);
     }
   });
 }
@@ -127,15 +135,23 @@ document.addEventListener(
     // 1 = Start in "forever or whatever mode"
     if (keyName === "1") {
       modus = 1;
+      index = 0;
       fileList = shuffle(fileList);
       playNextVideo();
+      loopTimeout && clearTimeout(loopTimeout);
       return;
     }
 
     // 2 = Start in "only forever"
     if (keyName === "2") {
       modus = 2;
-      playNextVideo();
+      index = 0;
+      db.find({ favorite: true }, function(err, docs) {
+        fileList = docs.map(doc => `${doc.id.videoId}.mp4`);
+        console.log("filelist", fileList);
+        playNextVideo();
+        loop();
+      });
       return;
     }
 
@@ -155,6 +171,7 @@ document.addEventListener(
     // R = reset
     if (keyName === "r") {
       reset();
+      loopTimeout && clearTimeout(loopTimeout);
       return;
     }
 
