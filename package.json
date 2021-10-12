@@ -49,7 +49,7 @@
     "dist": "DEBUG=electron-builder electron-builder -mw"
   },
   "devDependencies": {
-    "electron": "^7.2.4",
+    "electron": "^11.5.0",
     "electron-builder": "^22.1.0"
   }
 }
